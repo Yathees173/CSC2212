@@ -1,0 +1,34 @@
+function Euler(a,b,h,y1)
+n=(b-a)/h; 
+x=zeros(n+1,1); 
+y=zeros(n+1,1); 
+fx=zeros(n+1,1);
+
+x(1)=a;
+y(1)=y1;
+
+for i=1:n 
+    x(i+1)=x(i)+h;
+    y(i+1)=y(i)+h*f(x(i),y(i));
+    exact(i+1)=g(x(i+1));
+end
+
+fx;
+[x y]
+plot(x,y,'b-o');
+hold on;
+plot(x,exact,'r--');
+legend('Euler Approximation','Exact Solution');
+ xlabel('x');
+ ylabel('y');
+ title('Euler Method vs Exact Solution');
+end
+
+function dy=f(x,y)
+dy=x+y
+end
+
+function y=f(x)
+y=x
+end
+
